@@ -27,11 +27,11 @@ public class Zahlenschloss {
         for(int i : numbers){
             amount += minimumNumberGetter(i);
         }
-
+        closed = false;
         return amount;
         }else{
             System.out.println("ERROR LOG: numbers are not between 0 - 9 or too few/many numbers are used");
-            return -999;}
+            return -1;}
     }
     private boolean numberChecker(int[] numbers){
         boolean numberCheck = true;
