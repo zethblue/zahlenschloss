@@ -6,6 +6,7 @@ public class Zahlenschloss {
     private int combination;
     private boolean closed;
 
+    //erstellen eines Zahlenschlosses ohne Angaben erhält per Default 4 Drehscheiben
     public Zahlenschloss(){
         amountOfNumbers = 4;
     }
@@ -15,6 +16,7 @@ public class Zahlenschloss {
         } else { this.amountOfNumbers = 4;
             System.out.println("LOG/Warning, amountOfNumbers auf default/4 gesetzt");}
     }
+    //closing ohne Angaben erhält eine Zufallskombination beim Schließen
     public void closing(){
         if (!closed) {
             combination = (int) (Math.random() * 10);
@@ -31,6 +33,8 @@ public class Zahlenschloss {
             System.out.println("LOG:already closed or number out of scope");
         }
     }
+
+    //beim Öffnen wird ein int Array mitgegeben, auf length überprüft ob es mit dem Schloss zusammenpasst. Bei Fehlern wird -1 retourniert, das SChloss bleibt zu
     public int opening(int ... numbers){
         if(numberChecker(numbers)){
         int amount = 0;
@@ -44,6 +48,8 @@ public class Zahlenschloss {
             System.out.println("ERROR LOG: numbers are not between 0 - 9 or too few/many numbers are used");
             return -1;}
     }
+
+    //private Methode zum checken ob die Nummern zwischen 0 - 9 liegen
     private boolean numberChecker(int[] numbers){
         boolean numberCheck = true;
         for(int i : numbers){
@@ -55,6 +61,8 @@ public class Zahlenschloss {
         if(!(numbers.length == amountOfNumbers)){ numberCheck = false;}
         return numberCheck;
     }
+
+    //private Methode zum checken ob die Anzahl der Nummern zusammenpasst
     private int minimumNumberGetter(int number){
         if(number == combination) return 0;
         else{
@@ -64,6 +72,7 @@ public class Zahlenschloss {
         }
     }
 
+    //getter
     public int getAmountOfNumbers() {
         return amountOfNumbers;
     }
