@@ -49,7 +49,7 @@ public class Zahlenschloss {
             return -1;}
     }
 
-    //private Methode zum checken ob die Nummern zwischen 0 - 9 liegen
+    //private Methode zum checken ob die Nummern zwischen 0 - 9 liegen + ob die Anzahl der Nummern zusammenpasst
     private boolean numberChecker(int[] numbers){
         boolean numberCheck = true;
         for(int i : numbers){
@@ -62,7 +62,7 @@ public class Zahlenschloss {
         return numberCheck;
     }
 
-    //private Methode zum checken ob die Anzahl der Nummern zusammenpasst
+    //eruiert die minimale Drehzahl pro Drehscheibe
     private int minimumNumberGetter(int number){
         if(number == combination) return 0;
         else{
