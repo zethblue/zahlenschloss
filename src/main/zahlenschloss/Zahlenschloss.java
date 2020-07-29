@@ -1,4 +1,4 @@
-package start.zahlenschloss;
+package main.zahlenschloss;
 
 public class Zahlenschloss {
 
@@ -10,7 +10,10 @@ public class Zahlenschloss {
         amountOfNumbers = 4;
     }
     public Zahlenschloss(int amountOfNumbers){
-        this.amountOfNumbers = amountOfNumbers;
+        if(amountOfNumbers > 0) {
+            this.amountOfNumbers = amountOfNumbers;
+        } else { this.amountOfNumbers = 4;
+            System.out.println("LOG/Warning, amountOfNumbers auf default/4 gesetzt");}
     }
     public void closing(){
         if (!closed) {
@@ -18,6 +21,14 @@ public class Zahlenschloss {
             closed = true;
         } else {
             System.out.println("LOG:already closed");
+        }
+    }
+    public void closing(int number){
+        if (!closed & (number >= 0 & number <= 9)) {
+            combination = number ;
+            closed = true;
+        } else {
+            System.out.println("LOG:already closed or number out of scope");
         }
     }
     public int opening(int ... numbers){
@@ -36,7 +47,10 @@ public class Zahlenschloss {
     private boolean numberChecker(int[] numbers){
         boolean numberCheck = true;
         for(int i : numbers){
-            if(!(i >= 0 & i <= 9)){numberCheck = false;}
+            if (!(i >= 0 & i <= 9)) {
+                numberCheck = false;
+                break;
+            }
         }
         if(!(numbers.length == amountOfNumbers)){ numberCheck = false;}
         return numberCheck;
@@ -45,16 +59,15 @@ public class Zahlenschloss {
         if(number == combination) return 0;
         else{
             int a = Math.abs(number - combination);
-            int b = Math.abs(number - combination+10);
+            int b = Math.abs(number - (combination+10));
             return Math.min(a, b);
         }
     }
-    public void DEVstatus(){
-        System.out.println(amountOfNumbers + " = amountOfNumbers");
-        System.out.println(combination + " = combination");
-        System.out.println(closed + " = is closed");
 
-
-
+    public int getAmountOfNumbers() {
+        return amountOfNumbers;
+    }
+    public boolean isClosed() {
+        return closed;
     }
 }
