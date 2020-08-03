@@ -68,7 +68,8 @@ public class Zahlenschloss {
         else{
             int a = Math.abs(number - combination);
             int b = Math.abs(number - (combination+10));
-            return Math.min(a, b);
+            int c = Math.abs(number - (combination-10));
+            return Math.min(a,Math.min(b,c));
         }
     }
 

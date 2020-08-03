@@ -48,6 +48,15 @@ class ZahlenschlossTest {
         }
 
     @Test
+    void testOpeningDefault3() {
+        Zahlenschloss tester = new Zahlenschloss();
+        tester.closing(9);
+        assertEquals(2+3+4+5,tester.opening(1,2,3,4));
+        assertEquals(4+0+2+0,tester.opening(5,9,1,9));
+
+    }
+
+    @Test
     void testOpeningDefault2() {
         Zahlenschloss tester = new Zahlenschloss();
         tester.closing(2);
